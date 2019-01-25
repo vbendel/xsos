@@ -2868,6 +2868,7 @@ SYSCTL() {
   __P kernel.panic_on_stackoverflow "[bool] "
   __P kernel.softlockup_panic "[bool] "
   __P kernel.softlockup_thresh "[secs] "
+  __P kernel.watchdog_thresh "[secs] "
   __P kernel.pid_max
   __P kernel.threads-max
   __Pa kernel.sem "[array] "  "-vS=$XSOS_INDENT_H3"  '{printf "\"%s  %s  %s  %s\"%s\n", $1,$2,$3,$4,H0; printf "%sSEMMSL (max semaphores per array) =  %d\n%sSEMMNS (max sems system-wide)     =  %d\n%sSEMOPM (max ops per semop call)   =  %d\n%sSEMMNI (max number of sem arrays) =  %d\n", S,$1, S,$2, S,$3, S,$4}'
