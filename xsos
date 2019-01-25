@@ -2876,8 +2876,14 @@ SYSCTL() {
   __Pa kernel.shmmax "[bytes] "  '{printf "\"%s\"%s  (%.2f GiB max segment size)", $1, H0, $1/1024/1024/1024}'
   __Pa kernel.shmmni "[segments] "  '{printf "\"%s\"%s  (max number of segs)", $1, H0}'
   __Pa kernel.sysrq "[bitmask] "  '{if ($1==0) printf "\"0\"%s  (disallowed)", H0; else if ($1==1) printf "\"1\"%s  (all SysRqs allowed)", H0; else printf "\"%s\"%s  (see proc man page)", $1, H0}'
-  __Pa kernel.sched_min_granularity_ns "[nanosecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-9}'
+
+  echo -e "$XSOS_INDENT_H1${c[H2]}kernel.sched${c[0]}"
+  __Pa kernel.sched_min_granularity_ns "[nanosecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^- 9}'
+  __Pa kernel.sched_wakeup_granularity_ns "[nanosecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*  10^- 9}'
   __Pa kernel.sched_latency_ns "[nanosecs] "  '{printf "\"%s\"%s  (%.5f sec)", $1, H0, $1*10^-9}'
+  __Pa kernel.sched_rt_period_us "[microsecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-6}'
+  __Pa kernel.sched_rt_runtime_us "[microsecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-6}'
+  __Pa kernel.sched_rr_timeslice_ms "[millisecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-3}'
   
   echo -e "$XSOS_INDENT_H1${c[H2]}fs.${c[0]}"
   __Pa fs.file-max "[fds] "  '{printf "\"%s\"%s  (system-wide limit for num open files [file descriptors])", $1,H0}'
