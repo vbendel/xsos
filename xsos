@@ -2884,7 +2884,14 @@ SYSCTL() {
   __Pa kernel.sched_rt_period_us "[microsecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-6}'
   __Pa kernel.sched_rt_runtime_us "[microsecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-6}'
   __Pa kernel.sched_rr_timeslice_ms "[millisecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-3}'
-  
+ 
+  echo -e "$XSOS_INDENT_H1${c[H2]}kernel.numa${c[0]}"
+  __P kernel.numa_balancing "[bool] "
+  __Pa kernel.numa_balancing_scan_delay_ms "[millisecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-3}'
+  __Pa kernel.numa_balancing_scan_period_max_ms "[millisecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-3}'
+  __Pa kernel.numa_balancing_scan_period_min_ms "[millisecs] "  '{printf "\"%s\"%s  (%.5f sec)\n", $1, H0, $1*10^-3}'
+  __Pa kernel.numa_balancing_scan_size_mb "[megabytes] "  '{printf "\"%s\"%s  (%d MB)", $1, H0, $1}'
+
   echo -e "$XSOS_INDENT_H1${c[H2]}fs.${c[0]}"
   __Pa fs.file-max "[fds] "  '{printf "\"%s\"%s  (system-wide limit for num open files [file descriptors])", $1,H0}'
   __Pa fs.nr_open  "[fds] "  '{printf "\"%s\"%s  (per-process limit for num open files [see also RLIMIT_NOFILE])", $1,H0}'
